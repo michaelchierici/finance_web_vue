@@ -1,29 +1,26 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import TheModal from '@/components/TheModal.vue'
 import TheButton from '@/components/TheButton.vue';
-import UserService from '@/modules/User/services/UserService';
+import TheInput from '@/components/TheInput.vue'
 
 const isModalOpen = ref(false)
 
-async function loadData() {
-  try {
-    const response = await UserService.list()
-    console.log(response.data);
-  } catch (error) {
-    console.log(error)
-  }
-}
-onMounted(() => {
-  loadData()
-})
 </script>
 <template>
   <div>
     <TheButton @onClick="isModalOpen = true">Criar usuário</TheButton>
   </div>
-
-  <TheModal :show="isModalOpen" @close="isModalOpen = false" />
+  <TheModal :show="isModalOpen" @close="isModalOpen = false">
+    <template #header>
+      Crie um usuário
+    </template>
+    <template #body>
+      <TheInput placeholder="Nome" />
+      <TheInput placeholder="Idade" />
+      <TheInput placeholder="Profissão" />
+    </template>
+  </TheModal>
 </template>
 
 <style scoped>

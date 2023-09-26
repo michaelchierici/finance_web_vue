@@ -21,7 +21,6 @@ const props = defineProps({
 
         <div class="modal-footer">
           <slot name="footer">
-            rodapé padrão
             <button class="modal-default-button" @click="$emit('close')">
               OK
             </button>
@@ -47,12 +46,18 @@ const props = defineProps({
 
 .modal-container {
   width: 300px;
+  height: 300px;
   margin: auto;
   padding: 20px 30px;
-  background-color: #fff;
+  background-color: #ddd;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .modal-header h3 {
@@ -62,6 +67,10 @@ const props = defineProps({
 
 .modal-body {
   margin: 20px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 .modal-default-button {
